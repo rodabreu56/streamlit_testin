@@ -1,6 +1,5 @@
 import pandas as pd
 import streamlit as st
-from streamlit_extras.image_in_tables import table_with_images
 from pandas.api.types import (
     is_categorical_dtype,
     is_datetime64_any_dtype,
