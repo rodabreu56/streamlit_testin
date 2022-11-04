@@ -134,9 +134,16 @@ if uploaded_file is not None:
     all_imgs = chosen_df['url'].to_list()
 
     n = st.number_input('Number of Images to Display', min_value=1, max_value=len(all_imgs), value=1)
-
+    size = st.number_input('Image Width in pixels, default 400', min_value=1, max_value=1000, value=400)
     n_images = all_imgs[:n]
+    count = 0
     for n in n_images:
-        st.image(n, width=400)
+        st.image(n, width=size)
+        count += 1
+        st.download_button(
+            label="Download image",
+            data=n,
+            file_name=f"{count}.png",
+          )
     
     st.info("HAVE FEEDBACK? WAS THIS USEFUL? LET ME KNOW!")
