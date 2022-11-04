@@ -129,7 +129,7 @@ if uploaded_file is not None:
 
     st.write('You selected:', option)
 
-    st.dataframe(filter_dataframe(chosen_df))
+    st.dataframe(filter_dataframe(chosen_df),use_container_width=True)
     st.info("PICK FILTER, SELECT APPROPRIATE COLUMNS AND TINKER WITH THE DATAFRAME, THEN ENTER THE NUMBER OF IMAGES YOU NEED.")
     all_imgs = chosen_df['url'].to_list()
 
