@@ -6,6 +6,7 @@ from pandas.api.types import (
     is_numeric_dtype,
     is_object_dtype,
 )
+from geopy.geocoders import Nominatim
 
 st.title("Interacting with Processed CSVs - Images, PDF Reports, etc")
 
@@ -139,7 +140,17 @@ if uploaded_file is not None:
     n_images = all_imgs[:n]
     count = 0
     for n in n_images:
-        st.image(n,caption=f"Address: {chosen_df.iloc[count][addr_field]}. Imagery Date: {chosen_df.iloc[count]['cape_roof_condition_rating_date']}", width=size)
+        lat = chosen_df[count]['cape_primary_structure_latitude']
+        long = chosen_df[count]['cape_primary_structure_longitude']
+        geolocator = Nominatim(user_agent="geoapiExercises")
+        address = location.raw['address']
+        city = address.get('city', '')
+        state = address.get('state', '')
+        country = address.get('country', '')
+        code = address.get('country_code')
+        zipcode = address.get('postcode')
+        location = geolocator.reverse(lat+","+long)
+        st.image(n,caption=f"Address: {chosen_df.iloc[count][addr_field]}, {city}, {state} {zipcode}. Imagery Date: {chosen_df.iloc[count]['cape_roof_condition_rating_date']}", width=size)
         count += 1
         st.download_button(
             label="Download image",
