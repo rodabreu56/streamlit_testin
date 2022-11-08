@@ -88,9 +88,9 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
                     df = df[df[column].str.contains(user_text_input)]
 
     return df
-
-uploaded_file = st.file_uploader("Choose a Processed Book)", type="csv")
 addr_field = st.text_input("Name for 'Address' Field?", value="Address")
+uploaded_file = st.file_uploader("Choose a Processed Book", type="csv")
+
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
     ecr_list = ['cape_exterior_condition_rating','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_exterior_condition_rating_image_url','cape_roof_condition_rating_date']
