@@ -100,8 +100,8 @@ if uploaded_file is not None:
     roof_list= ['cape_roof_condition_rating', 'cape_roof_condition_rating_date','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}', 'cape_roof_condition_rating_image_url']
     tree_overhang_list = ['cape_tree_overhang','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_tree_overhang_image_url','cape_roof_condition_rating_date']
     yard_list = ['cape_yard_debris_coverage_pct', 'cape_yard_debris_coverage_sqft', 'cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_yard_debris_coverage_pct_image_url','cape_roof_condition_rating_date']
-    summary_list = ['cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_property_condition_report_url', 'cape_exterior_condition_rating','cape_roof_condition_rating','cape_roof_condition_rating_date','cape_roof_condition_rating_image_url','cape_accessory_structure_count','cape_accessory_structure_roof_condition_rating','cape_tree_overhang','cape_yard_debris_coverage_pct', 'cape_yard_debris_coverage_sqft','cape_roof_solar_panel', 'cape_liquidity_score']
-
+    #summary_list = ['cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_property_condition_report_url', 'cape_exterior_condition_rating','cape_roof_condition_rating','cape_roof_condition_rating_date','cape_roof_condition_rating_image_url','cape_accessory_structure_count','cape_accessory_structure_roof_condition_rating','cape_tree_overhang','cape_yard_debris_coverage_pct', 'cape_yard_debris_coverage_sqft','cape_roof_solar_panel', 'cape_liquidity_score']
+    summary_list = df.columns.values.tolist()
 
 
     pool_df = df[pool_list].copy()
@@ -122,7 +122,7 @@ if uploaded_file is not None:
     location_factors_df = df[loc_factors_list].copy()
     ecr_df = df[ecr_list].copy()
     ecr_df.rename(columns = {'cape_exterior_condition_rating_image_url':'url'}, inplace = True)
-    df_options = {"Roof Stuff": roof_df, "Tree Overhang Stuff": tree_overhang_df, "Yard Stuff": yard_df, "Pool Stuff": pool_df, "Property Summary": propertysummary_df, "Location Factors": location_factors_df, "ECR": ecr_df, "EVERYTHING": df}
+    df_options = {"Roof Stuff": roof_df, "Tree Overhang Stuff": tree_overhang_df, "Yard Stuff": yard_df, "Pool Stuff": pool_df, "Property Summary": propertysummary_df, "Location Factors": location_factors_df, "ECR": ecr_df, "EVERYTHING": propertysummary_df}
     option = st.selectbox(
     'Pick a set of attributes',
     list(df_options.keys()))
