@@ -145,7 +145,7 @@ if uploaded_file is not None:
         lat = chosen_df['cape_primary_structure_latitude'][count]
         long = chosen_df['cape_primary_structure_longitude'][count]
         geolocator = Nominatim(user_agent="geoapiExercises")
-        location = geolocator.reverse(lat+","+long)
+        location = geolocator.reverse(float(lat)+","+float(long))
         address = location.raw['address']
         city = address.get('city', '')
         state = address.get('state', '')
