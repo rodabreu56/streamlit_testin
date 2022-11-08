@@ -142,8 +142,8 @@ if uploaded_file is not None:
     count = 0
     print(n, n_images)
     for n in n_images:
-        lat = chosen_df[count]['cape_primary_structure_latitude']
-        long = chosen_df[count]['cape_primary_structure_longitude']
+        lat = chosen_df.iloc[count]['cape_primary_structure_latitude']
+        long = chosen_df.iloc[count]['cape_primary_structure_longitude']
         geolocator = Nominatim(user_agent="geoapiExercises")
         address = location.raw['address']
         city = address.get('city', '')
