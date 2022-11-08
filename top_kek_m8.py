@@ -140,6 +140,7 @@ if uploaded_file is not None:
     size = st.number_input('Image Width in pixels, default 400', min_value=1, max_value=1000, value=400)
     n_images = all_imgs[:n]
     count = 0
+    print(n, n_images)
     for n in n_images:
         lat = chosen_df[count]['cape_primary_structure_latitude']
         long = chosen_df[count]['cape_primary_structure_longitude']
