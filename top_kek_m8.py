@@ -148,7 +148,7 @@ if uploaded_file is not None:
         geolocator = Nominatim(user_agent="geoapiExercises")
         location = geolocator.reverse(coords)
         address = location.raw['address']
-        city = address.get('city', '')
+        city = address.get('town', '')
         state = address.get('state', '')
         country = address.get('country', '')
         code = address.get('country_code')
