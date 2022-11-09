@@ -163,13 +163,13 @@ if uploaded_file is not None:
         #zipcode = address.get('postcode')
         st.image(filtered_df2[i],caption=f"Imagery Date: {filtered_df.iloc[i]['cape_roof_condition_rating_date']}", width=size)
         #count += 1
-        #st.button('Download',on_click=download_image, args=(filtered_df2[i],str(i)))
-        st.download_button(label="Download image",data=filtered_df2[i],file_name=f"{i}.JPEG",mime="image/jpeg")
+        st.button('Download',on_click=download_image, args=(filtered_df2[i],str(i)))
+        #st.download_button(label="Download image",data=filtered_df2[i],file_name=f"{i}.JPEG",mime="image/jpeg")
     
     st.info("HAVE FEEDBACK? WAS THIS USEFUL? LET ME KNOW!")
 
     #locations = filtered_df.copy()
-    filtered_df.rename(columns = {'cape_primary_structure_latitude':'lat', 'cape_primary_structure_longitude': 'lon'}, inplace = True)
+    #filtered_df.rename(columns = {'cape_primary_structure_latitude':'lat', 'cape_primary_structure_longitude': 'lon'}, inplace = True)
 
-    st.map(filtered_df)
+    #st.map(filtered_df)
     #st.write(locations2)
