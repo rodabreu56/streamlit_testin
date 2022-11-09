@@ -102,7 +102,7 @@ if uploaded_file is not None:
     #roof_list= ['cape_roof_condition_rating', 'cape_roof_condition_rating_date','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}', 'cape_roof_condition_rating_image_url']
     #tree_overhang_list = ['cape_tree_overhang','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_tree_overhang_image_url','cape_roof_condition_rating_date']
     #yard_list = ['cape_yard_debris_coverage_pct', 'cape_yard_debris_coverage_sqft', 'cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_yard_debris_coverage_pct_image_url','cape_roof_condition_rating_date']
-    summary_list = ['cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_property_condition_report_url', 'cape_exterior_condition_rating','cape_roof_condition_rating','cape_roof_condition_rating_date','cape_roof_condition_rating_image_url','cape_accessory_structure_count','cape_accessory_structure_roof_condition_rating','cape_tree_overhang','cape_yard_debris_coverage_pct', 'cape_yard_debris_coverage_sqft','cape_roof_solar_panel', 'cape_liquidity_score']
+    #summary_list = ['cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_property_condition_report_url', 'cape_exterior_condition_rating','cape_roof_condition_rating','cape_roof_condition_rating_date','cape_roof_condition_rating_image_url','cape_accessory_structure_count','cape_accessory_structure_roof_condition_rating','cape_tree_overhang','cape_yard_debris_coverage_pct', 'cape_yard_debris_coverage_sqft','cape_roof_solar_panel', 'cape_liquidity_score']
     summary_list = df.columns.values.tolist()
 
 
@@ -132,8 +132,9 @@ if uploaded_file is not None:
 
     st.write('You selected:', option)
 
-    filtered_df = st.dataframe(filter_dataframe(chosen_df),use_container_width=True)
-    filtered_df2 = list(filtered_df['url'])
+    #filtered_df = st.dataframe(filter_dataframe(chosen_df),use_container_width=True)
+    filtered_df = filter_dataframe(chosen_df)
+    filtered_df2 = filtered_df['url'].to_list()
     st.info("PICK FILTERS, SELECT APPROPRIATE COLUMNS AND TINKER WITH THE DATAFRAME, THEN ENTER THE NUMBER OF IMAGES YOU NEED.")
     #all_imgs = filtered_df['url'].to_list()
     max_imgs = len(filtered_df2)
