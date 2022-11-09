@@ -144,8 +144,9 @@ if uploaded_file is not None:
     
     #print(n, n_images)
     for i in range(n):
-        lat = filtered_df['cape_primary_structure_latitude'][i]
-        long = filtered_df['cape_primary_structure_longitude'][i]
+        lat = filtered_df.loc[i,'cape_primary_structure_latitude']
+        long = filtered_df.loc[i,'cape_primary_structure_longitude']
+        #long = filtered_df['cape_primary_structure_longitude'][i]
         coords = f'{lat},{long}'
         geolocator = Nominatim(user_agent="geoapiExercises")
         location = geolocator.reverse(coords)
