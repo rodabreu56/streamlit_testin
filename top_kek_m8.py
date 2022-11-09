@@ -1,12 +1,17 @@
 import pandas as pd
 import streamlit as st
 from geopy.geocoders import Nominatim
+import urllib.request
 from pandas.api.types import (
     is_categorical_dtype,
     is_datetime64_any_dtype,
     is_numeric_dtype,
     is_object_dtype,
 )
+
+def download_image(url, file_name):
+    full_file_name = file_name + ".png"
+    urllib.request.urlretrieve(url, full_file_name)
 
 
 st.title("Interacting with Processed CSVs - Images, PDF Reports, etc")
@@ -158,12 +163,8 @@ if uploaded_file is not None:
         #zipcode = address.get('postcode')
         st.image(filtered_df2[i],caption=f"Imagery Date: {filtered_df.iloc[i]['cape_roof_condition_rating_date']}", width=size)
         #count += 1
-        st.download_button(
-            label="Download image",
-            data=filtered_df2[i],
-            file_name=f"{i}.JPEG",
-            mime="image/jpeg",
-          )
+        #st.button('Download',on_click=download_image, args=(filtered_df2[i],str(i)))
+        st.download_button(label="Download image",data=filtered_df2[i],file_name=f"{i}.JPEG",mime="image/jpeg")
     
     st.info("HAVE FEEDBACK? WAS THIS USEFUL? LET ME KNOW!")
 
