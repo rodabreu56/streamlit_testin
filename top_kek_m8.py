@@ -95,36 +95,36 @@ uploaded_file = st.file_uploader("Choose a Processed Book", type="csv")
 
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
-    ecr_list = ['cape_exterior_condition_rating','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_exterior_condition_rating_image_url','cape_roof_condition_rating_date']
-    loc_factors_list = ['cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_parcel_distance_to_coastline', 'cape_parcel_distance_to_highway','cape_parcel_distance_to_lake', 'cape_parcel_distance_to_powerline', 'cape_parcel_distance_to_railway', 'cape_parcel_distance_to_river','cape_roof_condition_rating_date']
-    pool_list = ['cape_pool_condition_rating','cape_pool_presence','cape_pool_structure_type','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}', 'cape_pool_condition_rating_image_url','cape_roof_condition_rating_date']
-    acc_struct_list = ['cape_accessory_structure_count','cape_accessory_structure_roof_condition_rating','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_roof_condition_rating_date']
-    roof_list= ['cape_roof_condition_rating', 'cape_roof_condition_rating_date','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}', 'cape_roof_condition_rating_image_url']
-    tree_overhang_list = ['cape_tree_overhang','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_tree_overhang_image_url','cape_roof_condition_rating_date']
-    yard_list = ['cape_yard_debris_coverage_pct', 'cape_yard_debris_coverage_sqft', 'cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_yard_debris_coverage_pct_image_url','cape_roof_condition_rating_date']
-    #summary_list = ['cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_property_condition_report_url', 'cape_exterior_condition_rating','cape_roof_condition_rating','cape_roof_condition_rating_date','cape_roof_condition_rating_image_url','cape_accessory_structure_count','cape_accessory_structure_roof_condition_rating','cape_tree_overhang','cape_yard_debris_coverage_pct', 'cape_yard_debris_coverage_sqft','cape_roof_solar_panel', 'cape_liquidity_score']
+    #ecr_list = ['cape_exterior_condition_rating','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_exterior_condition_rating_image_url','cape_roof_condition_rating_date']
+    #loc_factors_list = ['cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_parcel_distance_to_coastline', 'cape_parcel_distance_to_highway','cape_parcel_distance_to_lake', 'cape_parcel_distance_to_powerline', 'cape_parcel_distance_to_railway', 'cape_parcel_distance_to_river','cape_roof_condition_rating_date']
+    #pool_list = ['cape_pool_condition_rating','cape_pool_presence','cape_pool_structure_type','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}', 'cape_pool_condition_rating_image_url','cape_roof_condition_rating_date']
+    #acc_struct_list = ['cape_accessory_structure_count','cape_accessory_structure_roof_condition_rating','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_roof_condition_rating_date']
+    #roof_list= ['cape_roof_condition_rating', 'cape_roof_condition_rating_date','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}', 'cape_roof_condition_rating_image_url']
+    #tree_overhang_list = ['cape_tree_overhang','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_tree_overhang_image_url','cape_roof_condition_rating_date']
+    #yard_list = ['cape_yard_debris_coverage_pct', 'cape_yard_debris_coverage_sqft', 'cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_yard_debris_coverage_pct_image_url','cape_roof_condition_rating_date']
+    summary_list = ['cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_property_condition_report_url', 'cape_exterior_condition_rating','cape_roof_condition_rating','cape_roof_condition_rating_date','cape_roof_condition_rating_image_url','cape_accessory_structure_count','cape_accessory_structure_roof_condition_rating','cape_tree_overhang','cape_yard_debris_coverage_pct', 'cape_yard_debris_coverage_sqft','cape_roof_solar_panel', 'cape_liquidity_score']
     summary_list = df.columns.values.tolist()
 
 
-    pool_df = df[pool_list].copy()
-    pool_df.rename(columns = {'cape_pool_condition_rating_image_url':'url'}, inplace = True)
+    #pool_df = df[pool_list].copy()
+    #pool_df.rename(columns = {'cape_pool_condition_rating_image_url':'url'}, inplace = True)
 
-    roof_df = df[roof_list].copy()
-    roof_df.rename(columns = {'cape_roof_condition_rating_image_url':'url'}, inplace = True)
+    #roof_df = df[roof_list].copy()
+    #roof_df.rename(columns = {'cape_roof_condition_rating_image_url':'url'}, inplace = True)
 
-    tree_overhang_df = df[tree_overhang_list].copy()
-    tree_overhang_df.rename(columns = {'cape_tree_overhang_image_url':'url'}, inplace = True)
+    #tree_overhang_df = df[tree_overhang_list].copy()
+    #tree_overhang_df.rename(columns = {'cape_tree_overhang_image_url':'url'}, inplace = True)
 
-    yard_df = df[yard_list].copy()
-    yard_df.rename(columns = {'cape_yard_debris_coverage_pct_image_url':'url'}, inplace = True)
+    #yard_df = df[yard_list].copy()
+    #yard_df.rename(columns = {'cape_yard_debris_coverage_pct_image_url':'url'}, inplace = True)
 
     propertysummary_df = df[summary_list].copy()
     propertysummary_df.rename(columns = {'cape_roof_condition_rating_image_url':'url'}, inplace = True)
 
-    location_factors_df = df[loc_factors_list].copy()
-    ecr_df = df[ecr_list].copy()
-    ecr_df.rename(columns = {'cape_exterior_condition_rating_image_url':'url'}, inplace = True)
-    df_options = {"Roof Stuff": roof_df, "Tree Overhang Stuff": tree_overhang_df, "Yard Stuff": yard_df, "Pool Stuff": pool_df, "Property Summary": propertysummary_df, "Location Factors": location_factors_df, "ECR": ecr_df, "EVERYTHING": propertysummary_df}
+    #location_factors_df = df[loc_factors_list].copy()
+    #ecr_df = df[ecr_list].copy()
+    #ecr_df.rename(columns = {'cape_exterior_condition_rating_image_url':'url'}, inplace = True)
+    df_options = {"EVERYTHING": propertysummary_df}
     option = st.selectbox(
     'Pick a set of attributes',
     list(df_options.keys()))
@@ -133,7 +133,7 @@ if uploaded_file is not None:
     st.write('You selected:', option)
 
     st.dataframe(filter_dataframe(chosen_df),use_container_width=True)
-    st.info("PICK FILTER, SELECT APPROPRIATE COLUMNS AND TINKER WITH THE DATAFRAME, THEN ENTER THE NUMBER OF IMAGES YOU NEED.")
+    st.info("PICK FILTERS, SELECT APPROPRIATE COLUMNS AND TINKER WITH THE DATAFRAME, THEN ENTER THE NUMBER OF IMAGES YOU NEED.")
     all_imgs = chosen_df['url'].to_list()
 
     n = st.number_input('Number of Images to Display', min_value=1, max_value=len(all_imgs), value=1)
