@@ -160,8 +160,9 @@ if uploaded_file is not None:
         #count += 1
         st.download_button(
             label="Download image",
-            data=filtered_df2[i],
+            data=filtered_df[i],
             file_name=f"{i}.png",
+            mime="image/png",
           )
     
     st.info("HAVE FEEDBACK? WAS THIS USEFUL? LET ME KNOW!")
