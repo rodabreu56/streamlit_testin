@@ -133,9 +133,10 @@ if uploaded_file is not None:
     st.write('You selected:', option)
 
     filtered_df = st.dataframe(filter_dataframe(chosen_df),use_container_width=True)
+    filtered_df2 = list(filtered_df['url'])
     st.info("PICK FILTERS, SELECT APPROPRIATE COLUMNS AND TINKER WITH THE DATAFRAME, THEN ENTER THE NUMBER OF IMAGES YOU NEED.")
     #all_imgs = filtered_df['url'].to_list()
-    max_imgs = filtered_df['url'].count()
+    max_imgs = len(filtered_df2)
     n = st.number_input('Number of Images to Display', min_value=1, max_value=max_imgs, value=1)
     size = st.number_input('Image Width in pixels, default 400', min_value=1, max_value=1000, value=400)
     #n_images = all_imgs[:n]
