@@ -161,12 +161,14 @@ if uploaded_file is not None:
         #country = address.get('country', '')
         #code = address.get('country_code')
         #zipcode = address.get('postcode')
-        #st.image(filtered_df2[i],caption=f"Imagery Date: {filtered_df.iloc[i]['cape_roof_condition_rating_date']}", width=size)
+        st.image(filtered_df2[i],caption=f"Imagery Date: {filtered_df.iloc[i]['cape_roof_condition_rating_date']}", width=size)
         img = st.image(filtered_df2[i],width=size)
         #st.image(img)
         #count += 1
         #st.write(i)
         #st.button('Download',on_click=download_image, args=(filtered_df2[i],str(i)))
+        st.write(filtered_df2[i])
+        st.write(type(filtered_df2[i]))
         st.download_button(label="Download image",data=img,file_name=f"{i}.png",mime="image/png")
     
     st.info("HAVE FEEDBACK? WAS THIS USEFUL? LET ME KNOW!")
