@@ -170,3 +170,4 @@ if uploaded_file is not None:
     locations2 = locations.rename(columns = {'cape_primary_structure_latitude':'lat', 'cape_primary_structure_longitude': 'long'}, inplace = True)
 
     st.map(locations2)
+    st.write(locations2)
