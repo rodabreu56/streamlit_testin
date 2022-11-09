@@ -1,4 +1,5 @@
 import pandas as pd
+from PIL import Image
 import streamlit as st
 from geopy.geocoders import Nominatim
 import urllib.request
@@ -8,6 +9,7 @@ from pandas.api.types import (
     is_numeric_dtype,
     is_object_dtype,
 )
+import io
 
 def download_image(url, file_name):
     full_file_name = file_name + ".png"
@@ -162,14 +164,18 @@ if uploaded_file is not None:
         #code = address.get('country_code')
         #zipcode = address.get('postcode')
         st.image(filtered_df2[i],caption=f"Imagery Date: {filtered_df.iloc[i]['cape_roof_condition_rating_date']}", width=size)
-        img = st.image(filtered_df2[i],width=size)
+        img0 = filtered_df2[i]
         #st.image(img)
         #count += 1
         #st.write(i)
         #st.button('Download',on_click=download_image, args=(filtered_df2[i],str(i)))
-        st.write(filtered_df2[i])
-        st.write(type(filtered_df2[i]))
-        st.download_button(label="Download image",data=img,file_name=f"{i}.png",mime="image/png")
+        urllib.request.urlretrieve(img0, f"img{i}.png")
+        
+        img = Image.open(f"img{i}.png")
+        img_byte_arr = io.BytesIO()
+        img.save(img_byte_arr, format='PNG')
+        img_byte_arr = img_byte_arr.getvalue()
+        st.download_button(label="Download image",data=img_byte_arr,file_name=f"{i}.png",mime="image/png")
     
     st.info("HAVE FEEDBACK? WAS THIS USEFUL? LET ME KNOW!")
 
