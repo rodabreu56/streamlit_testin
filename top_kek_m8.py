@@ -165,3 +165,6 @@ if uploaded_file is not None:
           )
     
     st.info("HAVE FEEDBACK? WAS THIS USEFUL? LET ME KNOW!")
+
+    locations = filtered_df[['cape_primary_structure_latitude', 'cape_primary_structure_longitude']]
+    st.map(locations)
