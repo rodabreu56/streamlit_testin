@@ -144,8 +144,8 @@ if uploaded_file is not None:
     
     #print(n, n_images)
     for i in range(n):
-        lat = filtered_df['cape_primary_structure_latitude'][n]
-        long = filtered_df['cape_primary_structure_longitude'][n]
+        lat = filtered_df['cape_primary_structure_latitude'][i]
+        long = filtered_df['cape_primary_structure_longitude'][i]
         coords = f'{lat},{long}'
         geolocator = Nominatim(user_agent="geoapiExercises")
         location = geolocator.reverse(coords)
@@ -155,12 +155,12 @@ if uploaded_file is not None:
         country = address.get('country', '')
         code = address.get('country_code')
         zipcode = address.get('postcode')
-        st.image(n,caption=f"Address: {chosen_df.iloc[count][addr_field]}, {city}, {state} {zipcode}. Imagery Date: {chosen_df.iloc[count]['cape_roof_condition_rating_date']}", width=size)
+        st.image(i,caption=f"Address: {chosen_df.iloc[i][addr_field]}, {city}, {state} {zipcode}. Imagery Date: {chosen_df.iloc[i]['cape_roof_condition_rating_date']}", width=size)
         #count += 1
         st.download_button(
             label="Download image",
             data=n,
-            file_name=f"{count}.png",
+            file_name=f"{address}.png",
           )
     
     st.info("HAVE FEEDBACK? WAS THIS USEFUL? LET ME KNOW!")
