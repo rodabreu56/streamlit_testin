@@ -134,16 +134,16 @@ if uploaded_file is not None:
 
     filtered_df = st.dataframe(filter_dataframe(chosen_df),use_container_width=True)
     st.info("PICK FILTERS, SELECT APPROPRIATE COLUMNS AND TINKER WITH THE DATAFRAME, THEN ENTER THE NUMBER OF IMAGES YOU NEED.")
-    all_imgs = filtered_df['url'].to_list()
+    #all_imgs = filtered_df['url'].to_list()
 
-    n = st.number_input('Number of Images to Display', min_value=1, max_value=len(all_imgs), value=1)
+    n = st.number_input('Number of Images to Display', min_value=1, max_value=filtered_df['url'].count(), value=1)
     size = st.number_input('Image Width in pixels, default 400', min_value=1, max_value=1000, value=400)
-    n_images = all_imgs[:n]
-    count = 0
-    print(n, n_images)
-    for n in n_images:
-        lat = filtered_df['cape_primary_structure_latitude'][count]
-        long = filtered_df['cape_primary_structure_longitude'][count]
+    #n_images = all_imgs[:n]
+    
+    #print(n, n_images)
+    for i in range(n):
+        lat = filtered_df['cape_primary_structure_latitude'][n]
+        long = filtered_df['cape_primary_structure_longitude'][n]
         coords = f'{lat},{long}'
         geolocator = Nominatim(user_agent="geoapiExercises")
         location = geolocator.reverse(coords)
@@ -154,7 +154,7 @@ if uploaded_file is not None:
         code = address.get('country_code')
         zipcode = address.get('postcode')
         st.image(n,caption=f"Address: {chosen_df.iloc[count][addr_field]}, {city}, {state} {zipcode}. Imagery Date: {chosen_df.iloc[count]['cape_roof_condition_rating_date']}", width=size)
-        count += 1
+        #count += 1
         st.download_button(
             label="Download image",
             data=n,
