@@ -163,6 +163,7 @@ if uploaded_file is not None:
         #zipcode = address.get('postcode')
         st.image(filtered_df2[i],caption=f"Imagery Date: {filtered_df.iloc[i]['cape_roof_condition_rating_date']}", width=size)
         #count += 1
+        st.write(i)
         st.button('Download',on_click=download_image, args=(filtered_df2[i],str(i)))
         #st.download_button(label="Download image",data=filtered_df2[i],file_name=f"{i}.JPEG",mime="image/jpeg")
     
