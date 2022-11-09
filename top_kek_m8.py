@@ -167,7 +167,7 @@ if uploaded_file is not None:
     st.info("HAVE FEEDBACK? WAS THIS USEFUL? LET ME KNOW!")
 
     #locations = filtered_df.copy()
-    filtered_df.rename(columns = {'cape_primary_structure_latitude':'lat', 'cape_primary_structure_longitude': 'long'}, inplace = True)
+    filtered_df.rename(columns = {'cape_primary_structure_latitude':'lat', 'cape_primary_structure_longitude': 'lon'}, inplace = True)
 
     st.map(filtered_df)
     #st.write(locations2)
