@@ -134,6 +134,7 @@ if uploaded_file is not None:
 
     #filtered_df = st.dataframe(filter_dataframe(chosen_df),use_container_width=True)
     filtered_df = filter_dataframe(chosen_df)
+    filtered_df
     filtered_df2 = filtered_df['url'].to_list()
     st.info("PICK FILTERS, SELECT APPROPRIATE COLUMNS AND TINKER WITH THE DATAFRAME, THEN ENTER THE NUMBER OF IMAGES YOU NEED.")
     #all_imgs = filtered_df['url'].to_list()
