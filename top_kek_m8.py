@@ -161,8 +161,8 @@ if uploaded_file is not None:
         st.download_button(
             label="Download image",
             data=filtered_df2[i],
-            file_name=f"{i}.png",
-            mime="image/png",
+            file_name=f"{i}.JPEG",
+            mime="image/jpeg",
           )
     
     st.info("HAVE FEEDBACK? WAS THIS USEFUL? LET ME KNOW!")
