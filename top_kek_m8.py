@@ -103,7 +103,7 @@ if uploaded_file is not None:
     #tree_overhang_list = ['cape_tree_overhang','cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_tree_overhang_image_url','cape_roof_condition_rating_date']
     #yard_list = ['cape_yard_debris_coverage_pct', 'cape_yard_debris_coverage_sqft', 'cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_yard_debris_coverage_pct_image_url','cape_roof_condition_rating_date']
     #summary_list = ['cape_response_status','cape_primary_structure_latitude', 'cape_primary_structure_longitude',f'{addr_field}','cape_property_condition_report_url', 'cape_exterior_condition_rating','cape_roof_condition_rating','cape_roof_condition_rating_date','cape_roof_condition_rating_image_url','cape_accessory_structure_count','cape_accessory_structure_roof_condition_rating','cape_tree_overhang','cape_yard_debris_coverage_pct', 'cape_yard_debris_coverage_sqft','cape_roof_solar_panel', 'cape_liquidity_score']
-    summary_list = df.columns.values.tolist()
+    #summary_list = df.columns.values.tolist()
 
 
     #pool_df = df[pool_list].copy()
@@ -118,23 +118,22 @@ if uploaded_file is not None:
     #yard_df = df[yard_list].copy()
     #yard_df.rename(columns = {'cape_yard_debris_coverage_pct_image_url':'url'}, inplace = True)
 
-    propertysummary_df = df[summary_list].copy()
+    propertysummary_df = df.copy()
     propertysummary_df.rename(columns = {'cape_roof_condition_rating_image_url':'url'}, inplace = True)
 
     #location_factors_df = df[loc_factors_list].copy()
-    #ecr_df = df[ecr_list].copy()
-    #ecr_df.rename(columns = {'cape_exterior_condition_rating_image_url':'url'}, inplace = True)
-    df_options = {"EVERYTHING": propertysummary_df}
-    option = st.selectbox(
-    'Pick a set of attributes',
-    list(df_options.keys()))
-    chosen_df = df_options[option]
+    
+    #df_options = {"EVERYTHING": propertysummary_df.columns.values.tolist()}
+    #option = st.selectbox(
+    #'Pick a set of attributes',
+    #list(df_options.keys()))
+    #chosen_df = df_options[option]
 
-    st.write('You selected:', option)
+    #st.write('You selected:', option)
 
     #filtered_df = st.dataframe(filter_dataframe(chosen_df),use_container_width=True)
-    filtered_df = filter_dataframe(chosen_df)
-    filtered_df
+    filtered_df = filter_dataframe(propertysummary_df)
+    st.write(filtered_df)
     filtered_df2 = filtered_df['url'].to_list()
     st.info("PICK FILTERS, SELECT APPROPRIATE COLUMNS AND TINKER WITH THE DATAFRAME, THEN ENTER THE NUMBER OF IMAGES YOU NEED.")
     #all_imgs = filtered_df['url'].to_list()
