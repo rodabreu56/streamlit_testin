@@ -132,9 +132,9 @@ if uploaded_file is not None:
 
     st.write('You selected:', option)
 
-    st.dataframe(filter_dataframe(chosen_df),use_container_width=True)
+    filtered_df = st.dataframe(filter_dataframe(chosen_df),use_container_width=True)
     st.info("PICK FILTERS, SELECT APPROPRIATE COLUMNS AND TINKER WITH THE DATAFRAME, THEN ENTER THE NUMBER OF IMAGES YOU NEED.")
-    all_imgs = chosen_df['url'].to_list()
+    all_imgs = filtered_df['url'].to_list()
 
     n = st.number_input('Number of Images to Display', min_value=1, max_value=len(all_imgs), value=1)
     size = st.number_input('Image Width in pixels, default 400', min_value=1, max_value=1000, value=400)
@@ -142,8 +142,8 @@ if uploaded_file is not None:
     count = 0
     print(n, n_images)
     for n in n_images:
-        lat = chosen_df['cape_primary_structure_latitude'][count]
-        long = chosen_df['cape_primary_structure_longitude'][count]
+        lat = filtered_df['cape_primary_structure_latitude'][count]
+        long = filtered_df['cape_primary_structure_longitude'][count]
         coords = f'{lat},{long}'
         geolocator = Nominatim(user_agent="geoapiExercises")
         location = geolocator.reverse(coords)
