@@ -38,7 +38,9 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
         return df
 
     df = df.copy()
-
+    l = ['unknown'] * len(df.columns)
+    df_length = len(df)
+    df.loc[df_length] = l
     # Try to convert datetimes into a standard format (datetime, no timezone)
     for col in df.columns:
         if is_object_dtype(df[col]):
